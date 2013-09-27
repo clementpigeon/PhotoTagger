@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   def show
     if params.include?(:id)
       @user = User.find(params[:id])
+      # @photos = @user.photos
     else
       redirect_to user_url(current_user)
     end

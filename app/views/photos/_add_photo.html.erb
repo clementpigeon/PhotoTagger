@@ -1,0 +1,33 @@
+<form id="upload_new" action="<%= api_photos_url %>" method="post" accept-charset="utf-8">
+  <input type="hidden" name="authenticity_token" value="
+  <%= form_authenticity_token %>">
+
+  <label>
+    Title
+    <input type="text" name="photo[title]">
+  </label>
+
+  <label>
+    URL
+    <input type="text" name="photo[url]">
+  </label>
+
+  <input id="upload_button" type="submit" value="Upload">
+</form>
+
+<script>
+  $(function() {
+    $("#upload_new").on("submit", function(event) {
+      event.preventDefault();
+      var formData = $(this).serializeJSON();
+      var newPhoto = new Photo(formData['photo']);
+      // console.log(newPhoto);
+
+      newPhoto.save(function(returnData) {
+        console.log(returnData);
+        var $photoLi = $("<li>" + returnData["url"] + "</li>");
+        $("#user_photos").append($photoLi);
+      });
+    });
+  });
+</script>
