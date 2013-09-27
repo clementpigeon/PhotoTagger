@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  photo: 
+  x_pos: 1
+  y_pos: 1
+
+two:
+  user: 
+  photo: 
+  x_pos: 1
+  y_pos: 1

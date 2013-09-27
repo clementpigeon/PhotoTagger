@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many :photo_taggings
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
 

@@ -10,4 +10,8 @@ class Photo < ActiveRecord::Base
     foreign_key: :owner_id,
     primary_key: :id
   )
+
+  has_many :photo_taggings
+
+  has_many :tagged_users, through: :photo_taggings, source: :user
 end
