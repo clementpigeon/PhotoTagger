@@ -5,8 +5,6 @@ var PT = root.PT = (root.PT || {});
 
 var PhotosListView = PT.PhotosListView = function() {
   this.$el = $('<div />');
-
-
 }
 
 PhotosListView.prototype.render = function(){

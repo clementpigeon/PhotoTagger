@@ -15,15 +15,32 @@
 //= require_tree .
 //= require_tree ./models
 //= require_tree ./views
+//= require_tree ../templates
 
 PT.initialize = function(CURRENT_USER_ID) {
   PT.Photo.fetchByUserId(CURRENT_USER_ID, function(){
-    var view = new PT.PhotosListView();
-    $('div#content').append(view.render());
-
+    var photoListView = new PT.PhotosListView();
+    $('div#content').append(photoListView.render());
+    var photoFormView = new PT.PhotosFormView();
+    $('div#content').append(photoFormView.render());
   });
 
 }
 
 
+//OLD
+$(function() {
+  $("#upload_new").on("submit", function(event) {
+    event.preventDefault();
+    var formData = $(this).serializeJSON();
+    var newPhoto = new PT.Photo(formData['photo']);
+    // console.log(newPhoto);
+
+    newPhoto.save(function(photo) {
+      console.log(photo);
+      var $photoLi = $("<li>" + photo.get("url") + "</li>");
+      $("#user_photos").append($photoLi);
+    });
+  });
+});
 
