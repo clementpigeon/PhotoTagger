@@ -20,12 +20,12 @@
     $("#upload_new").on("submit", function(event) {
       event.preventDefault();
       var formData = $(this).serializeJSON();
-      var newPhoto = new Photo(formData['photo']);
+      var newPhoto = new PT.Photo(formData['photo']);
       // console.log(newPhoto);
 
-      newPhoto.save(function(returnData) {
-        console.log(returnData);
-        var $photoLi = $("<li>" + returnData["url"] + "</li>");
+      newPhoto.save(function(photo) {
+        console.log(photo);
+        var $photoLi = $("<li>" + photo.get("url") + "</li>");
         $("#user_photos").append($photoLi);
       });
     });

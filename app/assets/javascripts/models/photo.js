@@ -32,7 +32,8 @@
         success: function(data) {
           console.log('photo create success ' + data);
           that.set('id', data['id']);
-          callback(data);
+          Photo.all.push(that);
+          callback(that);
         },
         failure: function(res){
           console.log('photo create failure ' + res);
@@ -48,10 +49,15 @@
       url: '/api/users/' + userId + '/photos.json',
       type: 'GET',
       success: function(data) {
+
         console.log('photo fetchByUserId success');
         _.map(data, function(photoJSON) {
-          return new Photo(photoJSON);
-        })
+
+          var newPhoto = new Photo(photoJSON);
+          Photo.all.push(newPhoto);
+          return newPhoto;
+        });
+
         callback(data);
       },
       failure: function(res) {

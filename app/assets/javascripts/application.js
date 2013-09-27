@@ -14,7 +14,16 @@
 //= require jquery_ujs
 //= require_tree .
 //= require_tree ./models
+//= require_tree ./views
 
+PT.initialize = function(CURRENT_USER_ID) {
+  PT.Photo.fetchByUserId(CURRENT_USER_ID, function(){
+    var view = new PT.PhotosListView();
+    $('div#content').append(view.render());
+
+  });
+
+}
 
 
 
