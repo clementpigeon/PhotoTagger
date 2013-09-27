@@ -1,5 +1,5 @@
 NewAuthDemo::Application.routes.draw do
-  root :to => "users#show"
+  root :to => "static_pages#root"
 
   resources :users, :only => [:create, :new, :show]
   resource :session, :only => [:create, :destroy, :new]
@@ -15,5 +15,4 @@ NewAuthDemo::Application.routes.draw do
     end
 
   end
-
 end
