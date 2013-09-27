@@ -10,6 +10,10 @@ end
 
 group :development do
   gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'bullet'
+  gem 'quiet_assets'
 end
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
