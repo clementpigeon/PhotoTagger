@@ -14,4 +14,5 @@ class Photo < ActiveRecord::Base
   has_many :photo_taggings
 
   has_many :tagged_users, through: :photo_taggings, source: :user
+
 end
