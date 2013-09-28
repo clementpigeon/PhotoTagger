@@ -5,14 +5,16 @@ NewAuthDemo::Application.routes.draw do
   resource :session, :only => [:create, :destroy, :new]
 
   namespace "api", :defaults => { :format => :json } do
-    resources :photo_taggings, only: [:create]
+
     resources :users do
       resources :photos, only: [:index]
     end
 
-    resources :photos, only: [:create, :show] do
+    resources :photos, only: [:create] do
       resources :photo_taggings, only: [:index]
     end
+
+    resources :photo_taggings, only: [:create]
 
   end
 end
