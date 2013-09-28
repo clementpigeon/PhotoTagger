@@ -1,15 +1,10 @@
 <div id="content"></div>
 
 
-<script type="application/json" id="bootstrapped_user">
-  <%= current_user.to_json.html_safe %>
-</script>
-
 <script type="text/javascript">
 $(function() {
-  var user = JSON.parse($("#bootstrapped_user").html());
-
-  PT.initialize(user.id);
+  var CURRENT_USER_ID = <%= current_user.id %>
+  PT.initialize(CURRENT_USER_ID);
 
 });
 </script>
