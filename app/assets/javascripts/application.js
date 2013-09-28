@@ -21,7 +21,7 @@ PT.initialize = function(CURRENT_USER_ID) {
   PT.Photo.fetchByUserId(CURRENT_USER_ID, function(){
     var photoListView = new PT.PhotosListView();
     $('div#content').append(photoListView.render());
-    var photoFormView = new PT.PhotosFormView();
+    var photoFormView = new PT.PhotoFormView();
     $('div#content').append(photoFormView.render());
   });
 
@@ -29,18 +29,18 @@ PT.initialize = function(CURRENT_USER_ID) {
 
 
 //OLD
-$(function() {
-  $("#upload_new").on("submit", function(event) {
-    event.preventDefault();
-    var formData = $(this).serializeJSON();
-    var newPhoto = new PT.Photo(formData['photo']);
-    // console.log(newPhoto);
-
-    newPhoto.save(function(photo) {
-      console.log(photo);
-      var $photoLi = $("<li>" + photo.get("url") + "</li>");
-      $("#user_photos").append($photoLi);
-    });
-  });
-});
+// $(function() {
+//   $("#upload_new").on("submit", function(event) {
+//     event.preventDefault();
+//     var formData = $(this).serializeJSON();
+//     var newPhoto = new PT.Photo(formData['photo']);
+//     // console.log(newPhoto);
+//
+//     newPhoto.save(function(photo) {
+//       console.log(photo);
+//       var $photoLi = $("<li>" + photo.get("url") + "</li>");
+//       $("#user_photos").append($photoLi);
+//     });
+//   });
+// });
 

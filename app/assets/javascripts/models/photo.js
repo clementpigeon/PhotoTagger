@@ -33,7 +33,7 @@
           console.log('photo create success ' + data);
           that.set('id', data['id']);
           Photo.all.push(that);
-          callback(that);
+          //callback(that);
         },
         failure: function(res){
           console.log('photo create failure ' + res);
