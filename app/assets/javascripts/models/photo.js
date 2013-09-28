@@ -5,6 +5,9 @@
     this.attributes = _.extend(obj);
   }
 
+  Photo.all = []
+
+
   Photo.prototype.get = function(attrName) {
     return this.attributes[attrName];
   }
@@ -13,34 +16,29 @@
     this.attributes[attrName] = val;
   }
 
-  Photo.all = []
-
   Photo.prototype.save = function(callback) {
-    // add validation that the url does not already have an idea
+    // add validation that the url does not already have an ID
     var that = this;
     var ajaxOptions = {
         url: '/api/photos.json',
         type: "POST",
         data: {
-          photo: //this.attributes
-          {
-            owner_id: this.get("owner_id"),
-            url: this.get("url"),
-            title: this.get("title")
-          }
+          photo: this.attributes
         },
         success: function(data) {
-          console.log('photo create success ' + data);
+          console.log('photo create success');
+          console.log(data);
+
           that.set('id', data['id']);
           Photo.all.push(that);
           //callback(that);
         },
         failure: function(res){
-          console.log('photo create failure ' + res);
+          console.log('photo create failure');
+          console.log(res);
           //
         }
       }
-    // console.log(ajaxOptions);
     $.ajax(ajaxOptions);
   };
 
@@ -49,20 +47,16 @@
       url: '/api/users/' + userId + '/photos.json',
       type: 'GET',
       success: function(data) {
-
         console.log('photo fetchByUserId success');
-        _.map(data, function(photoJSON) {
-
+        _.each(data, function(photoJSON) {
           var newPhoto = new Photo(photoJSON);
           Photo.all.push(newPhoto);
-          return newPhoto;
         });
-
         callback(data);
       },
       failure: function(res) {
-        console.log('photo fetchByUserId failure ' + res);
-        //
+        console.log('photo fetchByUserId failure');
+        console.log(res);
       }
     });
   }

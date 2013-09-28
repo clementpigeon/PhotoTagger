@@ -1,15 +1,13 @@
 (function(root) {
 var PT = root.PT = (root.PT || {});
 
-// var $liTemplate = $("<li><a id='<%%= photo.id %>'><%%= photo.title %></a></li>")
-
 var PhotosListView = PT.PhotosListView = function() {
-  this.$el = $('<div />');
+  this.$el = $('<div></div>');
 }
 
 PhotosListView.prototype.render = function(){
   this.$el.empty();
-  $ul = $('<ul />')
+  $ul = $('<ul>')
   this.$el.append($ul);
 
   PT.Photo.all.forEach(function(photo) {
