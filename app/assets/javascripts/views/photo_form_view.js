@@ -8,7 +8,6 @@ PhotoFormView.prototype.render = function(){
   var photo_form_template = JST['photo_form'];
   this.$el.append( photo_form_template() );
   return this.$el;
-
 }
 
 PhotoFormView.prototype.submit = function(event) {
@@ -17,12 +16,12 @@ PhotoFormView.prototype.submit = function(event) {
 
   var formData = $(this).serializeJSON();
   var newPhoto = new PT.Photo(formData['photo']);
-
+  $(this).find('input').not(':button, :submit, :reset, :hidden').val('');
   newPhoto.save();
-      // function(photo) {
-  //     var $photoLi = $("<li>" + photo.get("url") + "</li>");
-  //     $("#user_photos").append($photoLi);
-  //   }
+    //   function(photo) {
+    //   var $photoLi = $("<li>" + photo.get("url") + "</li>");
+    //   $("#content div ul").append($photoLi);
+    // }
 };
 
 

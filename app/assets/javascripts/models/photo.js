@@ -5,8 +5,9 @@
     this.attributes = _.extend(obj);
   }
 
-  Photo.all = []
+  Photo.all = [];
 
+  Photo._events = {};
 
   Photo.prototype.get = function(attrName) {
     return this.attributes[attrName];
@@ -31,11 +32,13 @@
 
           that.set('id', data['id']);
           Photo.all.push(that);
+          Photo.trigger('add');
           //callback(that);
         },
         failure: function(res){
           console.log('photo create failure');
           console.log(res);
+
           //
         }
       }
@@ -58,6 +61,21 @@
         console.log('photo fetchByUserId failure');
         console.log(res);
       }
+    });
+  };
+
+  Photo.on = function(eventName, callback) {
+    if (_.has(this._events, eventName)) {
+      this._events[eventName] += callback;
+    }
+    else {
+      this._events[eventName] = [callback];
+    }
+  }
+
+  Photo.trigger = function(eventName) {
+    this._events[eventName].forEach(function(event){
+      event();
     });
   }
 
