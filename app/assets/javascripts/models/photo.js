@@ -9,6 +9,16 @@
 
   Photo._events = {};
 
+  Photo.find = function(id) {
+    var result;
+    this.all.forEach(function(photo){
+      if (photo.get('id') == id) {
+        result = photo;
+      };
+    });
+    return result;
+  }
+
   Photo.prototype.get = function(attrName) {
     return this.attributes[attrName];
   }
