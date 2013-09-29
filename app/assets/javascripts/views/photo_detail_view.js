@@ -16,7 +16,7 @@ PhotoDetailView.prototype.render = function() {
 
 PhotoDetailView.prototype.popSelectView = function(event) {
   var $image = $(this.target);
-  var tag_select_view = new PT.TagSelectView($image, event).render();
+  var tag_select_view = new PT.TagSelectView(this.photo, event).render();
   tag_select_view.insertAfter($('.image_detail'))
 }
 

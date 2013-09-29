@@ -13,7 +13,7 @@ class PhotoTaggingsController < ApplicationController
     if @photo_tagging.save
       render json: @photo_tagging
     else
-      render head: :unprocessable_entity
+      render head: 422
     end
   end
 

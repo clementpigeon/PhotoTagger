@@ -42,8 +42,6 @@
 
           that.set('id', data['id']);
           PhotoTagging.all.push(that);
-          PhotoTagging.trigger('add');
-          //callback(that);
         },
         failure: function(res){
           console.log('PhotoTagging create failure');
