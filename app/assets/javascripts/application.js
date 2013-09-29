@@ -26,6 +26,7 @@ PT.initialize = function(CURRENT_USER_ID) {
 }
 
 PT.showPhotosIndex = function() {
+  $('div#content').empty();
   var photoListView = new PT.PhotosListView();
   $('div#content').append(photoListView.render());
 
@@ -36,8 +37,7 @@ PT.showPhotosIndex = function() {
 PT.showPhotoDetail = function(photo) {
   var photoDetailView = new PT.PhotoDetailView(photo);
   var newContent = photoDetailView.render();
-  console.log(newContent);
-  $('div#content').append(newContent);
+  $('div#content').html(newContent);
 
 
 }

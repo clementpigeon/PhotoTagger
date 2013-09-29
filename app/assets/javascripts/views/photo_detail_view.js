@@ -3,7 +3,7 @@
 var PhotoDetailView = PT.PhotoDetailView = function(photo){
   this.photo = photo;
   this.$el = $('<div>');
-
+  this.$el.on('click', '#back', PT.showPhotosIndex)
 };
 
 PhotoDetailView.prototype.render = function() {

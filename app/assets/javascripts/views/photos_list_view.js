@@ -27,7 +27,6 @@ PhotosListView.prototype.showDetail = function(event) {
   var link = $(event.target);
   var photoID = link.attr('data-id');
   var photo = PT.Photo.find(photoID);
-  console.log(photo);
   PT.showPhotoDetail(photo);
 }
 
