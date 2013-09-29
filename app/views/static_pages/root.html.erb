@@ -1,8 +1,10 @@
 <div id="content"></div>
 
 <script type="text/javascript">
+var USERS = <%= User.all.to_json.html_safe %>
+var CURRENT_USER_ID = <%= current_user.id %>
 $(function() {
-  var CURRENT_USER_ID = <%= current_user.id %>
+
   PT.initialize(CURRENT_USER_ID);
 
 });
