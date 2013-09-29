@@ -16,17 +16,8 @@ PhotoDetailView.prototype.render = function() {
 
 PhotoDetailView.prototype.popSelectView = function(event) {
   var $image = $(this.target);
-  console.log($image);
-  console.log(event.offsetX + ' ' + event.offsetY );
-  $image.position()
-  var top = $('img.image_detail').position().top + event.offsetY - 50;
-  var left = $('img.image_detail').position().left + event.offsetX - 50;
-  $photo_tag_div = $('<div>')
-    .addClass('photo_tag')
-    .css({'position': 'absolute', 'left' : left, 'top': top});
-  $photo_tag_div.insertAfter($('.image_detail'));
-
-
+  var tag_select_view = new PT.TagSelectView($image, event).render();
+  tag_select_view.insertAfter($('.image_detail'))
 }
 
 

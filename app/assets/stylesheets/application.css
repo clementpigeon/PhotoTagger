@@ -17,3 +17,8 @@
   width: 100px;
   height: 100px;
 }
+
+.image_detail {
+  max-width: 600px;
+  display: block;
+}
