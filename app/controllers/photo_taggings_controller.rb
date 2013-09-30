@@ -3,7 +3,7 @@ class PhotoTaggingsController < ApplicationController
   before_filter :is_photo_owner?, only: [:create]
 
   def index
-    @photo_taggings = PhotoTagging.find_by_photo_id(params[:photo_id])
+    @photo_taggings = PhotoTagging.find_all_by_photo_id(params[:photo_id])
     render json: @photo_taggings
   end
 

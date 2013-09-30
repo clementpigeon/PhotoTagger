@@ -2,7 +2,6 @@
 var PT = root.PT = (root.PT || {});
 
 var TagSelectView = PT.TagSelectView = function(photo, clickEvent) {
-  console.log(photo);
   var that = this;
   this.photo = photo;
   this.clickEvent = clickEvent;
@@ -37,7 +36,6 @@ TagSelectView.prototype.selectTagOptions = function(event){
       'x_pos': this.x_pos,
       'y_pos': this.y_pos
     };
-    console.log(new_tag_data);
     var new_tag = new PT.PhotoTagging(new_tag_data);
     new_tag.save();
     this.$el.remove();

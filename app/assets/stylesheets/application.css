@@ -17,11 +17,32 @@
   display: block;
 }
 
+.photo_detail_view {
+  position:relative;
+}
+
 .photo_tag {
-  border: 4px solid red;
+  border: 4px solid blue;
   width: 100px;
   height: 100px;
   float:left;
+}
+.existing_tag .tagName {
+  position: relative;
+  top:110px;
+  background: white;
+  display:none;
+}
+
+.existing_tag:hover .tagName {
+  display:block;
+}
+
+.existing_tag {
+  border: 4px solid #000080;
+  width: 100px;
+  height: 100px;
+  position: absolute;
 }
 
 ul.tag-options {
@@ -31,14 +52,14 @@ ul.tag-options {
   padding: 0px;
   position: absolute;
   left: 100px;
-  color: white;
+  color: black;
   font-size: 20px;
-  -webkit-text-stroke: 0.3px black;
-
+  background: white;
+  opacity:0.65;
 }
 
 ul.tag-options li {
-  border: solid red 5px;
+  border: solid blue 5px;
   height: 20px;
   width: 100px;
 }

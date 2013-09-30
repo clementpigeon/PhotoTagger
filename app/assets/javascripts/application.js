@@ -39,5 +39,5 @@ PT.showPhotoDetail = function(photo) {
   var newContent = photoDetailView.render();
   $('div#content').html(newContent);
 
-
 }
+

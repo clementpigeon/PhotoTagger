@@ -38,16 +38,13 @@
         },
         success: function(data) {
           console.log('PhotoTagging create success');
-          console.log(data);
-
           that.set('id', data['id']);
           PhotoTagging.all.push(that);
+          PhotoTagging.trigger('add');
         },
         failure: function(res){
           console.log('PhotoTagging create failure');
           console.log(res);
-
-          //
         }
       }
     $.ajax(ajaxOptions);
@@ -58,6 +55,7 @@
       url: '/api/photos/' + photoId + '/photo_taggings.json',
       type: 'GET',
       success: function(data) {
+        PhotoTagging.all = [];
         console.log('photoTagging fetchByPhotoId success');
         _.each(data, function(photoTaggingJSON) {
           var newPhotoTagging = new PhotoTagging(photoTaggingJSON);
@@ -74,10 +72,11 @@
 
   PhotoTagging.on = function(eventName, callback) {
     if (_.has(this._events, eventName)) {
-      this._events[eventName] += callback;
+      this._events[eventName].push(callback);
     }
     else {
-      this._events[eventName] = [callback];
+      this._events[eventName] = [];
+      this._events[eventName].push(callback)
     }
   }
 
