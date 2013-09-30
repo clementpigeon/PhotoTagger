@@ -38,7 +38,6 @@ PhotoDetailView.prototype.popSelectView = function(event) {
 }
 
 PhotoDetailView.prototype.escape = function(event) {
-  console.log(event);
   if (event.which == 27){
     if (this.tag_select_view) {
       this.tag_select_view.remove();

@@ -15,6 +15,7 @@
 .image_detail {
   max-width: 600px;
   display: block;
+  cursor: crosshair;
 }
 
 .photo_detail_view {
@@ -26,6 +27,7 @@
   width: 100px;
   height: 100px;
   float:left;
+  cursor: default;
 }
 .existing_tag .tagName {
   position: relative;
@@ -39,6 +41,7 @@
 .existing_tag .tagName button{
   right:10px;
   position:absolute;
+  cursor: pointer;
 }
 
 .existing_tag:hover .tagName {
@@ -63,6 +66,7 @@ ul.tag-options {
   font-size: 20px;
   background: white;
   opacity:0.65;
+  cursor: pointer;
 }
 
 ul.tag-options li {
