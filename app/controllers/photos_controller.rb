@@ -7,4 +7,6 @@ class PhotosController < ApplicationController
       format.json { render json: @photos }
     end
   end
+
+
 end

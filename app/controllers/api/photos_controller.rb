@@ -21,4 +21,16 @@ class Api::PhotosController < ApplicationController
       format.json { render json: @photos }
     end
   end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+
+    if @photo.destroy
+      render status: 200, json: @photo
+    else
+      render status: 404, json: @photo
+    end
+  end
+
+
 end

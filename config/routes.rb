@@ -10,7 +10,7 @@ NewAuthDemo::Application.routes.draw do
       resources :photos, only: [:index]
     end
 
-    resources :photos, only: [:create] do
+    resources :photos, only: [:create, :destroy] do
       resources :photo_taggings, only: [:index]
     end
 

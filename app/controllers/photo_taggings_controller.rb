@@ -22,5 +22,14 @@ class PhotoTaggingsController < ApplicationController
     render head: 403 unless @photo.owner_id == current_user.id
   end
 
+  def destroy
+    @photo_tagging = PhotoTagging.find(params[:id])
+
+    if @photo_tagging.destroy
+      render status: 200, json: @photo_tagging
+    else
+      render status: 404, json: @photo_tagging
+    end
+  end
 
 end

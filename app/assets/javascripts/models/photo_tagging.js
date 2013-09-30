@@ -5,6 +5,8 @@
     this.attributes = _.extend(obj);
   }
 
+  PT.PhotoTagging.inherits(PT.Model);
+
   PhotoTagging.all = [];
 
   PhotoTagging._events = {};
@@ -69,6 +71,32 @@
       }
     });
   };
+
+
+  PhotoTagging.prototype.destroy = function(callback) {
+    var tagId = this.get('id');
+    var ajaxOptions = {
+        url: '/api/photo_taggings/' + tagId + '.json',
+        type: "DELETE",
+        success: function(data) {
+          console.log('tag delete success');
+          PhotoTagging.all = _.reject(PhotoTagging.all, function(el){
+            return el.get('id') == tagId;
+          })
+          PhotoTagging.trigger('remove');
+          //callback(that);
+        },
+        failure: function(res){
+          console.log('tag delete failure');
+          console.log(res);
+
+          //
+        }
+      };
+      console.log(ajaxOptions);
+    $.ajax(ajaxOptions);
+  };
+
 
   PhotoTagging.on = function(eventName, callback) {
     if (_.has(this._events, eventName)) {

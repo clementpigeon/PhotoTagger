@@ -29,9 +29,16 @@
 }
 .existing_tag .tagName {
   position: relative;
-  top:110px;
+  top:104px;
   background: white;
   display:none;
+  position:relative;
+  height: 24px;
+}
+
+.existing_tag .tagName button{
+  right:10px;
+  position:absolute;
 }
 
 .existing_tag:hover .tagName {

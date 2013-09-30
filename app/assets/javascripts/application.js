@@ -17,6 +17,10 @@
 //= require_tree ./views
 //= require_tree ../templates
 
+
+
+
+
 PT.initialize = function(CURRENT_USER_ID) {
   PT.Photo.fetchByUserId(CURRENT_USER_ID, function(){
     PT.showPhotosIndex();
